@@ -34,6 +34,7 @@ gpio_heat = 23  # Switches zero-cross solid-state-relay
 
 ### Thermocouple Adapter selection:
 #   max31855 - bitbang SPI interface
+#   max6675 - bitbang SPI interface for obsolete chip with 1000C limit
 #   max31856 - bitbang SPI interface. must specify thermocouple_type.
 max31855 = 1
 max31856 = 0
