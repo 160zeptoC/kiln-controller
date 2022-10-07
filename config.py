@@ -37,6 +37,7 @@ gpio_heat = 23  # Switches zero-cross solid-state-relay
 #   max31856 - bitbang SPI interface. must specify thermocouple_type.
 max31855 = 1
 max31856 = 0
+max6675 = 0
 # see lib/max31856.py for other thermocouple_type, only applies to max31856
 # uncomment this if using MAX-31856
 #thermocouple_type = MAX31856.MAX31856_S_TYPE
