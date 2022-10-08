@@ -89,7 +89,7 @@ class Board(object):
                 log.warning(msg)
                 
          
-         if config.max6675:
+        if config.max6675:
             try:
                 #from max6675 import MAX6675, MAX6675Error
                 self.name='MAX6675'
