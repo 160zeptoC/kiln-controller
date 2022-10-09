@@ -8,7 +8,7 @@ class MAX6675(object):
      - The [GPIO Library](https://code.google.com/p/raspberry-gpio-python/) (Already on most Raspberry Pi OS builds)
      - A [Raspberry Pi](http://www.raspberrypi.org/)
     '''
-    def __init__(self, cs_pin, clock_pin, data_pin, units = "c", board = GPIO.BCM):
+    def __init__(self, cs_pin, clock_pin, data_pin, units = "c", board = GPIO.BCM, power_pin = 0):
         '''Initialize Soft (Bitbang) SPI bus
         Parameters:
         - cs_pin:    Chip Select (CS) / Slave Select (SS) pin (Any GPIO)
@@ -16,11 +16,13 @@ class MAX6675(object):
         - data_pin:  Data input (SO / MOSI) pin (Any GPIO)
         - units:     (optional) unit of measurement to return. ("c" (default) | "k" | "f")
         - board:     (optional) pin numbering method as per RPi.GPIO library (GPIO.BCM (default) | GPIO.BOARD)
+        - power_pin (optional) allows thermocouple chip to be powered from gpio
         '''
         self.cs_pin = cs_pin
         self.clock_pin = clock_pin
         self.data_pin = data_pin
         self.units = units
+        self.power_pin = power_pin
         self.data = None
         self.board = board
         self.noConnection = self.shortToGround = self.shortToVCC = self.unknownError = False
@@ -30,6 +32,10 @@ class MAX6675(object):
         GPIO.setup(self.cs_pin, GPIO.OUT)
         GPIO.setup(self.clock_pin, GPIO.OUT)
         GPIO.setup(self.data_pin, GPIO.IN)
+        #if using thermocouple power pin, initialise and set high
+        if (self.power_pin > 0)
+            GPIO.setup(self.power_pin, GPIO.OUT)
+            GPIO.output(self.power_pin, GPIO.HIGH)
 
         # Pull chip select high to make chip inactive
         GPIO.output(self.cs_pin, GPIO.HIGH)
