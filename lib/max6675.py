@@ -26,16 +26,18 @@ class MAX6675(object):
         self.data = None
         self.board = board
         self.noConnection = self.shortToGround = self.shortToVCC = self.unknownError = False
-
-        # Initialize needed GPIO
+        
+        #set board type
         GPIO.setmode(self.board)
-        GPIO.setup(self.cs_pin, GPIO.OUT)
-        GPIO.setup(self.clock_pin, GPIO.OUT)
-        GPIO.setup(self.data_pin, GPIO.IN)
         #if using thermocouple power pin, initialise and set high
         if (self.power_pin > 0)
             GPIO.setup(self.power_pin, GPIO.OUT)
             GPIO.output(self.power_pin, GPIO.HIGH)
+        # Initialize needed GPIO
+        GPIO.setup(self.cs_pin, GPIO.OUT)
+        GPIO.setup(self.clock_pin, GPIO.OUT)
+        GPIO.setup(self.data_pin, GPIO.IN)
+       
 
         # Pull chip select high to make chip inactive
         GPIO.output(self.cs_pin, GPIO.HIGH)
