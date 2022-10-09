@@ -34,19 +34,20 @@ gpio_heat = 23  # Switches zero-cross solid-state-relay
 
 ### Thermocouple Adapter selection:
 #   max31855 - bitbang SPI interface
-#   max6675 - bitbang SPI interface for obsolete chip with 1000C limit
+#   max6675 - bitbang SPI interface for obsolete chip with 1023C limit
 #   max31856 - bitbang SPI interface. must specify thermocouple_type.
-max31855 = 1
+max31855 = 0
 max31856 = 0
-max6675 = 0
+max6675 = 1
 # see lib/max31856.py for other thermocouple_type, only applies to max31856
 # uncomment this if using MAX-31856
 #thermocouple_type = MAX31856.MAX31856_S_TYPE
 
 ### Thermocouple Connection (using bitbang interfaces)
-gpio_sensor_cs = 27
-gpio_sensor_clock = 22
-gpio_sensor_data = 17
+gpio_sensor_cs = 13
+gpio_sensor_clock = 19
+gpio_sensor_data = 6
+gpio_sensor_power = 26 # optional pgio power for thermocouple chip currently implemented for max6675 only
 gpio_sensor_di = 10 # only used with max31856
 
 ########################################################################
@@ -101,7 +102,7 @@ sim_R_ho_air   = 0.05   # K/W  " with internal air circulation
 # If you change the temp_scale, all settings in this file are assumed to
 # be in that scale.
 
-temp_scale          = "f" # c = Celsius | f = Fahrenheit - Unit to display
+temp_scale          = "c" # c = Celsius | f = Fahrenheit - Unit to display
 time_scale_slope    = "h" # s = Seconds | m = Minutes | h = Hours - Slope displayed in temp_scale per time_scale_slope
 time_scale_profile  = "m" # s = Seconds | m = Minutes | h = Hours - Enter and view target time in time_scale_profile
 
@@ -139,7 +140,7 @@ thermocouple_offset=0
 temperature_average_samples = 40 
 
 # Thermocouple AC frequency filtering - set to True if in a 50Hz locale, else leave at False for 60Hz locale
-ac_freq_50hz = False
+ac_freq_50hz = True
 
 ########################################################################
 # Emergencies - or maybe not
