@@ -8,15 +8,15 @@ class MAX6675(object):
      - The [GPIO Library](https://code.google.com/p/raspberry-gpio-python/) (Already on most Raspberry Pi OS builds)
      - A [Raspberry Pi](http://www.raspberrypi.org/)
     '''
-    def __init__(self, cs_pin, clock_pin, data_pin, units = "c", board = GPIO.BCM, power_pin = 0):
+    def __init__(self, cs_pin, clock_pin, data_pin, units = "c", power_pin = 0, board = GPIO.BCM):
         '''Initialize Soft (Bitbang) SPI bus
         Parameters:
         - cs_pin:    Chip Select (CS) / Slave Select (SS) pin (Any GPIO)
         - clock_pin: Clock (SCLK / SCK) pin (Any GPIO)
         - data_pin:  Data input (SO / MOSI) pin (Any GPIO)
         - units:     (optional) unit of measurement to return. ("c" (default) | "k" | "f")
-        - board:     (optional) pin numbering method as per RPi.GPIO library (GPIO.BCM (default) | GPIO.BOARD)
         - power_pin (optional) allows thermocouple chip to be powered from gpio
+        - board:     (optional) pin numbering method as per RPi.GPIO library (GPIO.BCM (default) | GPIO.BOARD)
         '''
         self.cs_pin = cs_pin
         self.clock_pin = clock_pin
