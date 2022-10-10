@@ -30,7 +30,7 @@ class MAX6675(object):
         #set board type
         GPIO.setmode(self.board)
         #if using thermocouple power pin, initialise and set high
-        if (self.power_pin > 0)
+        if (self.power_pin > 0):
             GPIO.setup(self.power_pin, GPIO.OUT)
             GPIO.output(self.power_pin, GPIO.HIGH)
         # Initialize needed GPIO
