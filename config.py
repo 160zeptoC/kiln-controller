@@ -38,7 +38,7 @@ gpio_heat = 23  # Switches zero-cross solid-state-relay
 #   max31856 - bitbang SPI interface. must specify thermocouple_type.
 max31855 = 0
 max31856 = 0
-max6675 = 1
+max6675 = 1 #max6675 is slow. Maximum of 4 samples per second. eg temperature_average_samples = 15  and sensor_time_wait = 5
 # see lib/max31856.py for other thermocouple_type, only applies to max31856
 # uncomment this if using MAX-31856
 #thermocouple_type = MAX31856.MAX31856_S_TYPE
