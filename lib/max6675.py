@@ -116,7 +116,7 @@ class MAX6675Error(Exception):
 
 if __name__ == "__main__":
 
-    # Multi-chip example
+    # Multi-chip example ( copied from max31855 lib. Has not been tested)
     import time
     cs_pins = [4, 17, 18, 24]
     clock_pin = 23
@@ -132,7 +132,7 @@ if __name__ == "__main__":
                 rj = thermocouple.get_rj()
                 try:
                     tc = thermocouple.get()
-                except MAX31855Error as e:
+                except MAX6675Error as e:
                     tc = "Error: "+ e.value
                     running = False
                 print("tc: {} and rj: {}".format(tc, rj))
